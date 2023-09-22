@@ -1,0 +1,17 @@
+{
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node"
+  },
+  "mongodb": {
+    "user": "user",
+    "password": "password",
+    "ipaddress": "127.0.0.1",
+    "port": 12345,
+    "databaseName": "test"
+  },  
+  "userinfo": {
+    "name": "my-name",
+    "address": "my-address"
+  }
+}
