@@ -1,22 +1,22 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { error } from "console";
 import { MongoClient } from "mongodb";
-import * as config from "../config.json";
-import * as content from "../content.json"
-
-//FUNCTION TO READ IN CONFIG HERE 
+require ('dotenv').config()
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-  const { user, password, ipaddress, port, databaseName } = read_mongodb_config(config.mongodb);
-  const { name, address } = read_content_config(content.userinfo);
-
-  var connStr = `mongodb://${user}:${password}@${ipaddress}:${port}?retryWrites=true&ssl=false`;
+  const mongo_db_user = process.env["MONGO_DB_USER"];
+  const mongo_db_password = process.env["MONGO_DB_PASSWORD"];
+  const mongo_db_ip = process.env["MONGO_DB_IP"];
+  const mongo_db_port = process.env["MONGO_DB_PORT"];
+  const mongo_db_name = process.env["MONGO_DB_NAME"];
+  
+  var connStr = `mongodb://${mongo_db_user}:${mongo_db_password}@${mongo_db_ip}:${mongo_db_port}?retryWrites=true&ssl=false`;
   console.log(connStr);
   var mongoClient = new MongoClient(connStr);
   try {
-    const database = await mongoClient.db(databaseName);
-    const collection = database.collection(databaseName);
-    const obj = { name: name, address: address }
+    const database = await mongoClient.db(mongo_db_name);
+    const collection = database.collection(mongo_db_name);
+    const obj = { name: "name", address: "address" }
     const res = collection.insertOne(obj);
     context.res = {
       'status': 201,
@@ -39,11 +39,3 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
 };
 
 export default httpTrigger;
-
-function read_mongodb_config(mongodb: { user: string; password: string; ipaddress: string; port: number; databaseName: string; }): { user: any; password: any; ipaddress: any; port: any; databaseName: any; } {
-  throw new Error("Function not implemented.");
-}
-function read_content_config(userinfo: { name: string; address: string; }): { name: any; address: any; } {
-  throw new Error("Function not implemented.");
-}
-

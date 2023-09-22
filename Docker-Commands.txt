@@ -1,3 +1,10 @@
 docker build -t azfunc-mongodb:0.0.1-revX .
 docker tag azfunc-mongodb:0.0.1-revX omegasilvan/functions:0.0.1-revX
 docker push omegasilvan/functions:0.0.1-revX
+
+RUN LOCALLY - AZFUNC
+docker run -p 7071:80 azfunc-mongodb:0.0.1-revX
+
+RUN LOCALLY - MONGODB
+docker-compose build
+docker-compose up
