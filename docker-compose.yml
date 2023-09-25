@@ -11,5 +11,5 @@ services:
         # so change it to whatever you want
         # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     ports:
-      - "27017:27017"
+      - "27016:27017"
     command: mongod

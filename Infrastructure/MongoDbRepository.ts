@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+import { Person } from "../Domain/Person"
 
 const mongo_db_user: string = process.env["MONGO_DB_USER"] as string;
 const mongo_db_password: string = process.env["MONGO_DB_PASSWORD"] as string;
@@ -24,8 +25,6 @@ export class MongoDbRepository {
     const database = db_client.db(db_name);
     const collection = database.collection(db_name);
     const data = await collection.find({}).limit(10).toArray();
-    // console.log("##### IN GET DATA MONGODBREPOSITORY #####")
-    // console.log(data)
     return data;
   }
 
@@ -36,9 +35,7 @@ export class MongoDbRepository {
     const db_client = new MongoClient(connection_string);
     const database = db_client.db(db_name);
     const collection = database.collection(db_name);
-    const obj = { name: "abc", address: "some-address" }
-    // console.log("##### IN POST DATA MONGODBREPOSITORY #####")
-    // console.log(obj)
+    const obj = new Person("Anonymous Person", "Some Address")
     collection.insertOne(obj);
   }
 }
