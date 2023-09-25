@@ -10,6 +10,7 @@ COPY . /home/site/wwwroot
 RUN apt-get update
 RUN apt-get -y install sudo
 RUN apt-get -y install vim
+RUN apt-get -y install netcat
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 RUN cd /home/site/wwwroot && \
