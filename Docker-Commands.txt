@@ -4,6 +4,13 @@ docker push omegasilvan/functions:0.0.1-revX
 
 RUN LOCALLY - AZFUNC
 docker run -p 7071:80 azfunc-mongodb:0.0.1-revX
+docker run -p 7071:80 \
+  -e "MONGO_DB_USER=mongo" \
+  -e "MONGO_DB_PASSWORD=dbtest" \
+  -e "MONGO_DB_IP=127.0.0.1" \
+  -e "MONGO_DB_PORT=27016" \
+  -e "MONGO_DB_NAME=test" \
+  azfunc-mongodb:0.0.1-revX
 
 RUN LOCALLY - MONGODB
 docker-compose build
