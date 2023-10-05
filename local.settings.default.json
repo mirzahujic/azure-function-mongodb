@@ -1,17 +1,13 @@
 {
+  "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "",
-    "FUNCTIONS_WORKER_RUNTIME": "node"
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "MONGO_DB_USER": "user",
+    "MONGO_DB_PASSWORD": "pass",
+    "MONGO_NODEPORT_SVC_SERVICE_HOST": "127.0.0.1",
+    "MONGO_NODEPORT_SVC_SERVICE_PORT": "27017",
+    "MONGO_DB_NAME": "test"
   },
-  "mongodb": {
-    "user": "user",
-    "password": "password",
-    "ipaddress": "127.0.0.1",
-    "port": 12345,
-    "databaseName": "test"
-  },  
-  "userinfo": {
-    "name": "my-name",
-    "address": "my-address"
-  }
+  "ConnectionStrings": {}
 }

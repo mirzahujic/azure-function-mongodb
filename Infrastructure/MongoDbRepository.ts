@@ -3,8 +3,8 @@ import { Person } from "../Domain/Person"
 
 const mongo_db_user: string = process.env["MONGO_DB_USER"] as string;
 const mongo_db_password: string = process.env["MONGO_DB_PASSWORD"] as string;
-const mongo_db_ip: string = process.env["MONGO_DB_IP"] as string;
-const mongo_db_port: string = process.env["MONGO_DB_PORT"] as string;
+const mongo_db_ip: string = process.env["MONGO_NODEPORT_SVC_SERVICE_HOST"] as string;
+const mongo_db_port: string = process.env["MONGO_NODEPORT_SVC_SERVICE_PORT"] as string;
 const mongo_db_name: string = process.env["MONGO_DB_NAME"] as string;
 
 export class MongoDbRepository {
